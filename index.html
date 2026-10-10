@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<title>Forma Certa</title>
+<meta name="theme-color" content="#0f1115">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Forma Certa">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icone-180.png">
+<link rel="icon" type="image/png" href="icone-192.png">
+<link rel="stylesheet" href="estilo.css?v=1">
+</head>
+<body>
+
+<!-- Tela inicial -->
+<section id="tela-inicio" class="tela ativa">
+  <header class="topo">
+    <img src="icone-192.png" alt="" class="logo">
+    <div>
+      <h1>Forma Certa</h1>
+      <p class="sub">Seu treino de olho na postura</p>
+    </div>
+  </header>
+
+  <div id="aviso-instalar" class="cartao destaque" hidden>
+    <strong>Instale na tela inicial</strong>
+    <p>No Safari, toque em <b>Compartilhar</b> (quadrado com seta) e depois em <b>Adicionar à Tela de Início</b>. O app passa a abrir em tela cheia.</p>
+  </div>
+
+  <div class="cartao">
+    <h2>Exercício</h2>
+    <div class="exercicio-escolhido">🏋️ Agachamento livre</div>
+
+    <label class="campo">
+      <span>Peso na barra (kg)</span>
+      <div class="peso">
+        <button type="button" class="btn-peso" data-delta="-2.5">−</button>
+        <input id="peso" type="number" inputmode="decimal" step="0.5" min="0" value="20">
+        <button type="button" class="btn-peso" data-delta="2.5">+</button>
+      </div>
+    </label>
+
+    <label class="campo">
+      <span>Câmera</span>
+      <select id="camera">
+        <option value="environment">Traseira (celular apoiado)</option>
+        <option value="user">Frontal (se ver na tela)</option>
+      </select>
+    </label>
+
+    <label class="campo linha">
+      <input id="voz" type="checkbox" checked>
+      <span>Avisos por voz</span>
+    </label>
+
+    <button id="btn-iniciar" class="btn-principal">Começar série</button>
+  </div>
+
+  <div class="cartao dicas">
+    <h2>Como posicionar o celular</h2>
+    <ol>
+      <li>Apoie o celular de pé, na altura do quadril, a uns <b>2 a 3 metros</b>.</li>
+      <li>Fique <b>de lado</b> para a câmera (melhor para profundidade e coluna) ou <b>de frente</b> (melhor para os joelhos).</li>
+      <li>O corpo inteiro precisa aparecer, da cabeça aos pés.</li>
+      <li>Fique parado em pé até aparecer <b>"Pronto"</b> e então comece.</li>
+    </ol>
+  </div>
+
+  <div class="cartao">
+    <div class="titulo-linha">
+      <h2>Histórico</h2>
+      <button id="btn-limpar" class="btn-link" type="button">Limpar</button>
+    </div>
+    <div id="historico"><p class="vazio">Nenhuma série ainda.</p></div>
+  </div>
+
+  <p class="rodape">Protótipo de teste. O app é um apoio e não substitui a orientação de um profissional de educação física.</p>
+</section>
+
+<!-- Tela do treino -->
+<section id="tela-treino" class="tela">
+  <div class="palco">
+    <video id="video" playsinline muted autoplay></video>
+    <canvas id="desenho"></canvas>
+
+    <div class="hud-topo">
+      <div class="placar">
+        <div class="reps"><span id="reps">0</span><small>reps</small></div>
+        <div class="info">
+          <div id="status" class="status">Carregando…</div>
+          <div id="vista" class="vista"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="alerta" class="alerta" hidden></div>
+
+    <div class="hud-baixo">
+      <div class="medidor">
+        <span>Joelho</span><b id="angulo">–</b>
+      </div>
+      <div class="medidor">
+        <span>Última subida</span><b id="subida">–</b>
+      </div>
+      <button id="btn-encerrar" class="btn-encerrar">Encerrar série</button>
+    </div>
+  </div>
+</section>
+
+<!-- Resumo da série -->
+<section id="tela-resumo" class="tela">
+  <div class="cartao">
+    <h2>Resumo da série</h2>
+    <div id="resumo"></div>
+    <button id="btn-nova" class="btn-principal">Nova série</button>
+    <button id="btn-voltar" class="btn-secundario">Voltar ao início</button>
+  </div>
+</section>
+
+<script type="module" src="app.js?v=1"></script>
+</body>
+</html>
